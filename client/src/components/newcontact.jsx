@@ -7,8 +7,9 @@ function Newcontact(){
             <a href="#!">
             <img
                 class="rounded-t-lg"
-                src= "./src/zenitsu.jpeg"
-                alt="zenitsu" />
+                src= "./src/images/zenitsu.jpeg"
+                alt="zenitsu" 
+                />
             </a>
             <div class="p-6">
                 <h5
