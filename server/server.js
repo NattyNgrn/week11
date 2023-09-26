@@ -1,6 +1,6 @@
 import express  from "express";
 import cors from "cors";
-import DB from "db.js";
+import DB from "./db.js";
 import bodyParser from "body-parser";
 
 const app = express();
@@ -24,6 +24,7 @@ app.get("/allcontacts", async (req, res) => {
         FROM contacts
         `)
         const rows = result.rows;
+        console.log("success");
         res.send(rows);
     } 
     catch(error){
@@ -34,13 +35,15 @@ app.get("/allcontacts", async (req, res) => {
 
 app.get("/individual/:id", async (req, res) => {
     try{
+        const id = req.params.id;
         const result = await DB.query(`
         SELECT *
         FROM contacts
         WHERE id = ${id}
         `)
         const rows = result.rows;
-        res.send(rows);
+        console.log(rows);
+        res.send(rows[0]);
     } 
     catch(error){
         console.log(error);
@@ -79,6 +82,7 @@ app.put("/edit:id", async (req, res) => {
     catch(error){
         console.log(error);
         return res.status(400).json({error});
+}
 });
 
 app.delete("/delete/:id", async (req, res) => {
