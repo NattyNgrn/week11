@@ -9,8 +9,6 @@ async function allcontacts(){
     return contacts;
 }
 
-//allcontacts();
-
 
 //get individual contact when image is clicked from all contacts
 async function contactbyid(id){
@@ -20,7 +18,6 @@ async function contactbyid(id){
     return individual;
 }
 
-//contactbyid(1);
 
 //add new contact
 async function addnew(name, email, phone, notes, url){
@@ -40,7 +37,6 @@ async function addnew(name, email, phone, notes, url){
     console.log(result);
 }
 
-//addnew("Dhyey", "dhyeyshah@gmail.com", "3522355050", "loml", "");
 
 //edit contact
 async function edit(id, name, email, phone, notes, url){
@@ -60,7 +56,6 @@ async function edit(id, name, email, phone, notes, url){
     console.log(result);
 }
 
-edit(2, "Dhyey", "dhyeyHshah@gmail.com", "3522355050", "loml", "")
 
 //delete contact
 async function deleteContact(id){
@@ -73,6 +68,5 @@ async function deleteContact(id){
     console.log(result);
 }
 
-// deleteContact(2);
 
-// allcontacts()
+export {allcontacts, contactbyid, addnew, edit, deleteContact};
