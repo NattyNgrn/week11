@@ -1,6 +1,11 @@
-function Addnew() {
-  function save(){
+function Addnew({setPageToShow}) {
 
+  function backToHome(){
+    setPageToShow("home");
+  }
+
+  function save(){
+    backToHome()
   }
 
   function cancel(){
@@ -48,7 +53,7 @@ function Addnew() {
               
             <div class="flex justify-center mt-4">
               <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-md mr-2">Cancel</button>
-              <button class="bg-amber-400 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-md">Save</button>
+              <button onClick={save} class="bg-amber-400 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-md">Save</button>
             </div>
 
 
