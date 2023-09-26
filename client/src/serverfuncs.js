@@ -9,7 +9,7 @@ async function allcontacts(){
     return contacts;
 }
 
-allcontacts();
+//allcontacts();
 
 
 //get individual contact when image is clicked from all contacts
@@ -20,7 +20,7 @@ async function contactbyid(id){
     return individual;
 }
 
-contactbyid(1);
+//contactbyid(1);
 
 //add new contact
 async function addnew(name, email, phone, notes, url){
@@ -60,6 +60,7 @@ async function edit(id, name, email, phone, notes, url){
     console.log(result);
 }
 
+edit(2, "Dhyey", "dhyeyHshah@gmail.com", "3522355050", "loml", "")
 
 //delete contact
 async function deleteContact(id){
@@ -69,6 +70,9 @@ async function deleteContact(id){
             'Content-Type': 'application/json'
         }
     });
-    const newresult = await result.json();
-    console.log(newresult);
+    console.log(result);
 }
+
+// deleteContact(2);
+
+// allcontacts()

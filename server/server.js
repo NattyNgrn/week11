@@ -67,14 +67,14 @@ app.post("/add", async (req, res) => {
     }
 });
 
-app.put("/edit:id", async (req, res) => {
+app.put("/edit/:id", async (req, res) => {
     try{
         const id = req.params.id;
         const {name, email, phone, notes, url} = req.body;
         console.log(req.body);
         const result = await DB.query(`
         UPDATE contacts
-        SET name='${name}', email='${email}', phone='${phone}'. notes='${notes}', url='${url}'
+        SET name='${name}', email='${email}', phone='${phone}', notes='${notes}', url='${url}'
         WHERE id = ${id}
         `)
         res.send("success");
