@@ -2,7 +2,7 @@ const API = "http://localhost:1010";
 
 
 //get all contacts for display on home page
-async function allcontacts(){
+async function allcont(){
     const result = await fetch (API + '/allcontacts');
     const contacts = await result.json();
     console.log(contacts);
@@ -69,4 +69,4 @@ async function deleteContact(id){
 }
 
 
-export {allcontacts, contactbyid, addnew, edit, deleteContact};
+export {allcont, contactbyid, addnew, edit, deleteContact};
