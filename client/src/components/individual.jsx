@@ -24,7 +24,7 @@ function Individual({setPageToShow, id}){
         contactbyid(id).then(result => setContact(result));
     }, []);
 
-    async function deleteContact(id){
+    async function deleteCont(){
       await deleteContact(id);
       backToHome();
     }
@@ -87,7 +87,7 @@ function Individual({setPageToShow, id}){
             <h1 className="m-8 text-xl font-medium text-amber-400">Notes: {contact.notes}</h1>
             
             <button onClick={()=>setShowEdit(true)} class=" m-4 bg-amber-400 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-md"> Edit</button>
-            <button onClick={deleteContact} class="m-4 bg-amber-400 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-md"> Delete </button>
+            <button onClick={deleteCont} class="m-4 bg-amber-400 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-md"> Delete </button>
             <button onClick={backToHome} class=" m-4 bg-amber-400 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-md"> Home </button>
           </div>
       )

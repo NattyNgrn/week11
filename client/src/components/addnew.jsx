@@ -1,5 +1,6 @@
 import {addnew} from "../serverfuncs.js"
 import { useState, useEffect } from "react";
+import fs from "fs";
 
 function Addnew({setPageToShow}) {
 
@@ -8,6 +9,16 @@ function Addnew({setPageToShow}) {
   const [phone, setPhone] = useState("");
   const [notes, setNotes] = useState("");
   const [url, setUrl] = useState("");
+
+  console.log(url);
+
+  function saveImage(e){
+    const image = e.target.files[0];
+    const reader = new FileReader();
+    fs.writeFile(`/Users/natalianegron/Documents/Techtonica/week11/client/src/images/${name}.jpeg`, image);
+
+    
+  }
 
   function backToHome(){
     setPageToShow("home");
@@ -59,7 +70,7 @@ function Addnew({setPageToShow}) {
                       className="relative cursor-pointer  font-semibold text-amber-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-orange-500"
                     >
                       <span>Upload a file</span>
-                      <input id="file-upload" name="file-upload" type="file" className="sr-only" required/>
+                      <input id="file-upload" name="file-upload" type="file" className="sr-only"  onChange={saveImage} required/>
                     </label>
                     <p className="pl-1">or drag and drop</p>
                   </div>
