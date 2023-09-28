@@ -1,6 +1,6 @@
 import {addnew} from "../serverfuncs.js"
 import { useState, useEffect } from "react";
-import fs from "fs";
+import UploadWidget from "./uploadwidget.jsx";
 
 function Addnew({setPageToShow}) {
 
@@ -9,16 +9,10 @@ function Addnew({setPageToShow}) {
   const [phone, setPhone] = useState("");
   const [notes, setNotes] = useState("");
   const [url, setUrl] = useState("");
+  const [uploading, setUploading] = useState(false);
 
   console.log(url);
 
-  function saveImage(e){
-    const image = e.target.files[0];
-    const reader = new FileReader();
-    fs.writeFile(`/Users/natalianegron/Documents/Techtonica/week11/client/src/images/${name}.jpeg`, image);
-
-    
-  }
 
   function backToHome(){
     setPageToShow("home");
@@ -26,7 +20,7 @@ function Addnew({setPageToShow}) {
 
   async function save(e){
     e.preventDefault();
-    if (name == "" || email == "" || phone == "" || url == ""){
+    if (name == "" || email == "" || phone == ""){
       return;
     }
     const result = await addnew(name, email, phone, notes, url);
@@ -61,29 +55,15 @@ function Addnew({setPageToShow}) {
 
             <label htmlFor="cover-photo" className="block text-lg font-medium leading-6 text-amber-400">
                 Contact photo
-              </label>
-              <div className="mt-2 flex justify-center rounded-lg border border-dashed border-amber-400 px-6 py-10">
-                <div className="text-center">
-                  <div className="mt-4 flex text-xl leading-6 text-amber-400">
-                    <label
-                      htmlFor="file-upload"
-                      className="relative cursor-pointer  font-semibold text-amber-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-orange-500"
-                    >
-                      <span>Upload a file</span>
-                      <input id="file-upload" name="file-upload" type="file" className="sr-only"  onChange={saveImage} required/>
-                    </label>
-                    <p className="pl-1">or drag and drop</p>
-                  </div>
-                  <p className="text-lg leading-5 text-amber-400">PNG, JPG, GIF up to 10MB</p>
-                </div>
-                </div>
+            </label>
 
+            <UploadWidget setUploading={setUploading} setUrl={setUrl} ></UploadWidget>
 
             <div className="col-span-full">
               
             <div class="flex justify-center mt-4">
               <button onClick={cancel} class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-md mr-2">Cancel</button>
-              <button type="submit" onClick={save} class="bg-amber-400 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-md">Save</button>
+              <button disable={uploading} type="submit" onClick={save} class="bg-amber-400 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-md">Save</button>
             </div>
 
 

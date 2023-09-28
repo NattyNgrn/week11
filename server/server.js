@@ -2,6 +2,8 @@ import express  from "express";
 import cors from "cors";
 import DB from "./db.js";
 import bodyParser from "body-parser";
+import {v2 as cloudinary} from 'cloudinary';
+
 
 const app = express();
 const port = 1010;
